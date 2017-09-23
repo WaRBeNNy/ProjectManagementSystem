@@ -17,7 +17,11 @@ public class CompanyDAO {
         statement = connection.createStatement();
     }
 
-    public void create() {
+    public void create(int id, String name) throws SQLException {
+        String sql = "INSERT INTO `my_schema`.`companies` VALUES ('" + id + "', '" + name + "')";
+
+        statement.execute(sql);
+        System.out.println("Company " + name + " added to database.");
     }
 
     public void read() throws SQLException {
@@ -38,10 +42,18 @@ public class CompanyDAO {
         resultSet.close();
     }
 
-    public void update() {
+    public void update(int id, String name) throws SQLException {
+        String sql = "UPDATE `my_schema`.`companies` SET `name`='" + name + "' WHERE `comp_id`='" + id + "'";
+
+        statement.execute(sql);
+        System.out.println("Company " + name + " has been updated");
     }
 
-    public void delete(Company company) {
+    public void delete(int id) throws SQLException {
+        String sql = "DELETE FROM `my_schema`.`companies` WHERE `comp_id`='" + id + "';";
+
+        statement.execute(sql);
+        System.out.println("Company with id=" + id + " has been deleted.");
     }
 
     public void close() throws SQLException {

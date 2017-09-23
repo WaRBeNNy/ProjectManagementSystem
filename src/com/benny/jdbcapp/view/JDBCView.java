@@ -8,6 +8,10 @@ public class JDBCView {
     JDBCController controller = new JDBCController();
 
     public void start() throws SQLException, ClassNotFoundException {
-        controller.readCompany();
+
+        //controller.createCompany(7, "Samsung");
+        //controller.readCompany();
+        //controller.updateCompany(7, "Samsung Korea");
+        controller.deleteCompany(7);
     }
 }

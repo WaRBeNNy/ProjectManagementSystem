@@ -12,9 +12,27 @@ public class JDBCController {
 
     CompanyDAO companyDAO = new CompanyDAO();
 
+    public void createCompany(int id, String name) throws SQLException, ClassNotFoundException {
+        companyDAO.connect(DATABASE_URL, USER, PASSWORD);
+        companyDAO.create(id, name);
+        companyDAO.close();
+    }
+
     public void readCompany() throws SQLException, ClassNotFoundException {
         companyDAO.connect(DATABASE_URL, USER, PASSWORD);
         companyDAO.read();
+        companyDAO.close();
+    }
+
+    public void updateCompany(int id, String name) throws SQLException, ClassNotFoundException {
+        companyDAO.connect(DATABASE_URL, USER, PASSWORD);
+        companyDAO.update(id, name);
+        companyDAO.close();
+    }
+
+    public void deleteCompany(int id) throws SQLException, ClassNotFoundException {
+        companyDAO.connect(DATABASE_URL, USER, PASSWORD);
+        companyDAO.delete(id);
         companyDAO.close();
     }
 }
