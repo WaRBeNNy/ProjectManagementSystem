@@ -1,31 +1,18 @@
 package com.benny.jdbcapp.model;
 
-public class Developer {
-    private int id;
-    private String name;
+public class Developer extends Entity{
     private int project_id;
     private int company_id;
     private double salary;
 
-    public Developer(int id, String name) {
-        this.id = id;
-        this.name = name;
+    public Developer() {
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public Developer(int id, String name, int project_id, int company_id, double salary) {
+        super(id, name);
+        this.project_id = project_id;
+        this.company_id = company_id;
+        this.salary = salary;
     }
 
     public int getProject_id() {
@@ -51,4 +38,5 @@ public class Developer {
     public void setSalary(double salary) {
         this.salary = salary;
     }
+
 }

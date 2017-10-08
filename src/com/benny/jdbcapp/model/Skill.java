@@ -1,29 +1,14 @@
 package com.benny.jdbcapp.model;
 
-public class Skill {
-    private int id;
-    private String name;
-    private int developer_id;
+public class Skill extends Entity{
+   private int developer_id;
 
-    public Skill(int id, String name) {
-        this.id = id;
-        this.name = name;
+    public Skill() {
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public Skill(int id, String name, int developer_id) {
+        super(id, name);
+        this.developer_id = developer_id;
     }
 
     public int getDeveloper_id() {
@@ -34,3 +19,4 @@ public class Skill {
         this.developer_id = developer_id;
     }
 }
+

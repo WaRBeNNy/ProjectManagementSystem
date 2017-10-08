@@ -1,31 +1,18 @@
 package com.benny.jdbcapp.model;
 
-public class Project {
-    private int id;
-    private String name;
+public class Project extends Entity{
     private int company_id;
     private int customer_id;
     private double cost;
 
-    public Project(int id, String name) {
-        this.id = id;
-        this.name = name;
+    public Project() {
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public Project(int id, String name, int company_id, int customer_id, double cost) {
+        super(id, name);
+        this.company_id = company_id;
+        this.customer_id = customer_id;
+        this.cost = cost;
     }
 
     public int getCompany_id() {

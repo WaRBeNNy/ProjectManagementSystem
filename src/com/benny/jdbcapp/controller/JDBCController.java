@@ -1,38 +1,40 @@
 package com.benny.jdbcapp.controller;
 
-import com.benny.jdbcapp.dao.CompanyDAO;
+import com.benny.jdbcapp.dao.EntityDAO;
+import com.benny.jdbcapp.dao.FactoryDAO;
+import com.benny.jdbcapp.model.Entity;
 
 import java.sql.SQLException;
 
 public class JDBCController {
-    static final String DATABASE_URL = "jdbc:mysql://localhost/my_schema";
+    FactoryDAO factory = new FactoryDAO();
+    EntityDAO eDAO = new EntityDAO();
 
-    static final String USER = "root";
-    static final String PASSWORD = "BeNNySQL007";
-
-    CompanyDAO companyDAO = new CompanyDAO();
-
-    public void createCompany(int id, String name) throws SQLException, ClassNotFoundException {
-        companyDAO.connect(DATABASE_URL, USER, PASSWORD);
-        companyDAO.create(id, name);
-        companyDAO.close();
+    public void setDAO(Entity entity) {
+        eDAO = factory.getDAO(entity);
     }
 
-    public void readCompany() throws SQLException, ClassNotFoundException {
-        companyDAO.connect(DATABASE_URL, USER, PASSWORD);
-        companyDAO.read();
-        companyDAO.close();
+    public void create(Entity entity) throws SQLException, ClassNotFoundException {
+        eDAO.connect();
+        eDAO.create(entity);
+        eDAO.close();
     }
 
-    public void updateCompany(int id, String name) throws SQLException, ClassNotFoundException {
-        companyDAO.connect(DATABASE_URL, USER, PASSWORD);
-        companyDAO.update(id, name);
-        companyDAO.close();
+    public void read() throws SQLException, ClassNotFoundException {
+        eDAO.connect();
+        eDAO.read();
+        eDAO.close();
     }
 
-    public void deleteCompany(int id) throws SQLException, ClassNotFoundException {
-        companyDAO.connect(DATABASE_URL, USER, PASSWORD);
-        companyDAO.delete(id);
-        companyDAO.close();
+    public void update(Entity entity) throws SQLException, ClassNotFoundException {
+        eDAO.connect();
+        eDAO.update(entity);
+        eDAO.close();
+    }
+
+    public void delete(int id) throws SQLException, ClassNotFoundException {
+        eDAO.connect();
+        eDAO.delete(id);
+        eDAO.close();
     }
 }
